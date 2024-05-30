@@ -109,7 +109,7 @@ Green DevOps relies on the following concepts:
   \item \textbf{Regulatory Compliance}: With an increasing number of environmental regulations in place, Green DevOps helps companies comply with standards and avoid potential penalties.
 \end{itemize}
 
-\section{Definition of DevOps Monitoring}
+\section{DevOps Monitoring}
 DevOps monitoring is the process of tracking and measuring the performance of applications and systems in order to help software development teams identify and resolve potential issues more quickly. This is typically done via a manual or automated DevOps monitoring solution or a collection of continuous monitoring tools that gather data
 
 \subsection{DevOps Monitoring Use Cases}
@@ -121,10 +121,6 @@ The main benefit of DevOps monitoring is its ability to define, track, and measu
   Flagging issues to DevOps teams more quickly means they can resolve them before they impact user experience. Early detection and reporting of errors allow for prompt resolution, minimizing disruptions and maintaining a smooth user experience.
   \item \textbf{Reduce System Downtime:}
   DevOps monitoring tools provide continuous oversight of databases, applications, and networks, enabling teams to resolve issues before system downtimes occur. By proactively identifying potential problems, teams can take preemptive actions to avoid outages and ensure system reliability.
-
-  \item \textbf{Increase Security:}
-  Through data analysis across the entire ecosystem, continuous monitoring in DevOps automates security measures by identifying inconsistencies or triggers that lead to security failures. Teams can respond to threats manually (on-call) or automatically with tools, enhancing the overall security posture and protecting sensitive data.
-
   \item \textbf{Enhance Observability of DevOps Components:}
   Easily identify when various systems and applications in your DevOps stack degrade in performance, cost, security, or other factors to avoid problems down the road. Enhanced observability enables teams to maintain optimal performance and security by monitoring and analyzing system behavior continuously.
 
@@ -132,94 +128,45 @@ The main benefit of DevOps monitoring is its ability to define, track, and measu
   Continuous tracking of logs and metrics helps teams identify the root cause — where a problem started or occurred. This allows engineers to detect patterns in system behavior to anticipate and prevent future issues, improving mean time to detection (MTTD), mean time to repair (MTTR), and mean time to isolate (MTTI).
 \end{itemize}
 
+\section{Needs Analysis}
+\label{sec:needs_analysis}
+
+After identifying the functional and non-functional requirements of the project, it is essential to clearly define the stakeholders of the system and the different use cases. This step is crucial for preparing the design phase of the project.
+
+\subsection{Identification of Stakeholders}
+\label{subsec:identification_stakeholders}
+
+Identifying stakeholders is a fundamental step in any development project. It helps to understand the interactions and measure the influence of each group on the actions to be undertaken. But what exactly is a stakeholder? A stakeholder can be a physical person or a legal entity that participates in or is affected by the action or project in question. It is important to clearly specify the action or series of actions for which we seek to determine who the stakeholders are and what they represent.
+
+In the context of integrating Green IT into DevOps practices at Orange Business Services Morocco, we identify the following stakeholders:
+
+\begin{itemize}
+  \item \textbf{Platform Admin Team}: Responsible for setting up staging and production environments, managing cluster extension modules, and other cluster resources (controllers and admission webhooks), integrating development team repositories using customized GitRepository resources, and configuring how development team repositories are reconciled on each cluster.
+  
+  \item \textbf{Development Team}: Configures application definitions at the Kubernetes deployment level, manages Helm releases, configures how applications are reconciled across environments, and oversees the promotion of applications between environments.
+  
+  \item \textbf{Green IT Team}: Responsible for analyzing the energy consumption and CO$_2$ emissions of the Kubernetes clusters. 
+  
+  \item \textbf{GitLab}: A secondary stakeholder that manages team access and coordinates the CI/CD processes.
+\end{itemize}
+
+By identifying these stakeholders and their respective roles, we can ensure a comprehensive approach to integrating Green IT into our DevOps practices, balancing rapid software delivery with environmental responsibility.
+
+\subsection{Use Case Diagrams}
+\label{subsec:use_case_diagrams}
+
+The role of use case diagrams in UML is to model the behavior of a system and capture the associated requirements. These diagrams highlight the high-level functions of the system and define its scope. They also help identify the interactions between the system and its stakeholders. However, it is important to note that use case diagrams focus on what the system does and how the stakeholders use it, without delving into its internal workings.
+
+In this perspective, a use case represents a function that the system performs to achieve a specific goal for the user. It should generate an observable result that holds value for the system's user. On the other hand, a stakeholder represents the role of a user who interacts with the modeled system. This could be a human, an organization, a machine, or another external system.
+
+The relationships between elements in use case diagrams play a crucial role. As UML model elements, these relationships establish semantic links that define the structure and behavior among different elements of the model.
+
+In the context of integrating Green IT into DevOps at Orange Business Services Morocco, we present the global use case diagram of our solution in Fig. \ref{fig:use_case_diagram}. This diagram provides an overview of the interactions between the stakeholders and the various functionalities of the system.
+
+
+
+
 \section{}
-
-\subsection{Subsection1}
-\begin{longtable}[c]{| m{4.4cm} | m{11cm} |}
-\caption{Long table 1}\\
- \hline
-
- Cell & Description  \\ 
- \hline
- \endfirsthead
-
- \hline
- 
- Cell & Description  \\ 
- \hline
- \endhead
-
-        \hline
-          Element11 & Element21 \\
-        \hline
-          Element12 & Element22 \\
-        \hline
-          Element13 & Element23 \\
-        \hline
-          Element14 & Element24 \\
-        \hline
-          Element15 & Element25 \\
-        \hline
-          Element16 & Element26 \\
-        \hline
-          Element17 & Element27 \\
-        \hline
-          Element18 & Element28 \\
-        \hline
-          Element19 & Element29 \\
-        \hline
-          Element110 & Element210 \\
-        \hline
-          Element111 & Element211 \\
-        \hline
-          Element112 & Element212 \\
-        \hline
-          Element113 & Element213 \\
-        \hline
-          Element114 & Element214 \\
-        \hline
-
- \end{longtable}
-
- 
-\subsection{Subsection2}
-
-\subsubsection{Subsubsection1}
-
-\subsubsection{Subsubsection2}
-
-\paragraph{Paragraph a}
-
-\paragraph{Paragraph b}
-
-\section{Section2}
-
-\subsection{Subsection1}
-
-\subsection{Subsection2}
-
-\subsubsection{Subsubsection1}
-
-\subsubsection{Subsubsection2}
-
-\paragraph{Paragraph a}
-
-\paragraph{Paragraph b}
-
-
-\newpage
-
-\section*{Conclusion}
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec dapibus justo. Donec sagittis vulputate ante sed porttitor. Suspendisse sit amet nisl massa. Curabitur nec nisl condimentum, egestas ex vitae, dapibus enim. Etiam iaculis, erat faucibus pellentesque sagittis, nisi justo sollicitudin nibh, et condimentum augue massa non turpis. Proin commodo enim fermentum suscipit condimentum. Maecenas molestie, dui nec vestibulum rhoncus, arcu nisl faucibus neque, a ornare nisi massa ac eros. Aenean id velit sit amet lacus mattis varius. Donec fringilla massa sed nisi eleifend, a aliquet mi tempus. Nunc posuere euismod est, nec tristique augue lobortis non. Sed sodales sem ut metus tempus ullamcorper.
-
-
-
-
-
-
-
 
 
 
