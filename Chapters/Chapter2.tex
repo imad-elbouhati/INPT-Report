@@ -128,6 +128,74 @@ The main benefit of DevOps monitoring is its ability to define, track, and measu
   Continuous tracking of logs and metrics helps teams identify the root cause — where a problem started or occurred. This allows engineers to detect patterns in system behavior to anticipate and prevent future issues, improving mean time to detection (MTTD), mean time to repair (MTTR), and mean time to isolate (MTTI).
 \end{itemize}
 
+\section{Kepler tool}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{Logos/kepler-logo.png}
+  \caption{Kepler-logo}
+\end{figure}
+Kepler, short for Kubernetes-based Efficient Power Level Exporter, is a sophisticated tool designed to measure and estimate power consumption at various levels within a cloud infrastructure. It aims to provide detailed insights into the energy usage of processes, containers, and Kubernetes pods, making it an invaluable resource for both industrial and research projects. Kepler’s architecture is extensible, allowing for the integration of novel power models that cater to diverse system architectures. This tool is essential in an era where efficient energy consumption is critical to minimize environmental impact and manage operational costs effectively.
+
+\subsection{Kepler Functionalities}
+
+Kepler offers several key functionalities that make it a powerful tool for monitoring and optimizing energy consumption in cloud environments:
+
+\begin{enumerate}
+    \item \textbf{Real-Time Power Metrics Collection:} Kepler can gather real-time power consumption metrics from various hardware components, such as CPUs, GPUs, and DRAM. This is achieved through the use of APIs like Intel Running Average Power Limit (RAPL) and NVIDIA Management Library (NVML). These metrics provide an accurate and immediate view of the power usage of different system components.
+
+    \item \textbf{Power Consumption Estimation:} Kepler estimates power usage at multiple levels, including processes, containers, and Kubernetes pods. By analyzing resource utilization metrics, Kepler can determine the energy consumption of individual components and aggregate these to provide a comprehensive view of the system's power usage. This granular estimation is crucial for identifying power-hungry processes and optimizing resource allocation.
+
+    \item \textbf{Extensible Power Models:} One of Kepler's strengths is its extensibility. It allows for the integration of custom power models, which can be tailored to different system architectures and hardware setups. This adaptability ensures that Kepler can provide accurate power consumption estimates across a variety of environments, making it a versatile tool for both industrial and research applications.
+
+    \item \textbf{Data Aggregation and Storage:} The power consumption data collected and estimated by Kepler are stored in Prometheus, a powerful monitoring and alerting toolkit. This integration facilitates easy access, analysis, and visualization of power metrics. Users can query Prometheus to gain insights into energy consumption patterns and identify opportunities for optimization.
+
+    \item \textbf{Support for Bare-metal and Virtual Machines:} Kepler is designed to operate in both bare-metal and virtual machine (VM) environments. In bare-metal nodes, it uses direct power metrics from hardware components. In VM environments, where direct power metrics are not available, Kepler employs trained power models to estimate power consumption. This dual approach ensures that Kepler can provide valuable insights regardless of the underlying infrastructure.
+\end{enumerate}
+
+\subsection{How Kepler collects metrics?}
+The method for collecting system power consumption metrics in Kepler varies based on the deployment environment—bare-metal (BM) or virtual machines (VMs).
+
+In bare-metal environments, Kepler directly collects real-time system power metrics and utilizes the Ratio Power model to estimate power consumption. This model splits the dynamic power (related to resource utilization) proportionally across processes, while idle power (constant regardless of load) is divided according to the size of processes/containers as per the GreenHouse Gas (GHG) protocol. Hardware counters are used to assess CPU, memory, and GPU utilization.
+
+In public cloud VM environments, direct power measurement isn't feasible. Instead, Kepler uses trained power models for estimation. These models are based on regression analysis of data from benchmark tests. Kepler can also help cloud providers expose VM power metrics by measuring power at the BM level and passing this data to VMs via hypervisor Hypercalls. Within VMs, Kepler applies the Ratio Power Model to estimate power usage per process, using eBPF metrics due to the absence of hardware counters. However, Kepler does not estimate idle power for VMs due to unknowns about other running VMs on the host.
+
+The trained power models allow for accurate power estimation despite the limitations of VM environments, and Kepler's approach ensures adaptability across different deployment scenarios.
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=16cm]{Figures/kepler-system-power-consumption.jpg}
+  \caption{Collecting System Power Consumption – VMs versus BMs}
+\end{figure}
+
+\subsection{Benchmark: Scaphandre vs. Kepler}
+
+In the landscape of power consumption monitoring tools, Scaphandre and Kepler stand out as prominent contenders. As organizations increasingly prioritize energy efficiency and sustainability, understanding the capabilities of these tools becomes crucial. In this benchmark, we compare Scaphandre and Kepler to provide insights into their strengths and suitability for diverse computing environments.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+  \hline
+  \textbf{Aspect} & \textbf{Scaphandre} & \textbf{Kepler} \\
+  \hline
+  Scope and Granularity & Provides per-process power usage monitoring. Collects real-time power consumption metrics from system components using sensors like RAPL. & Offers estimation of power consumption at the process, container, and Kubernetes pod levels. Utilizes various APIs and sensors to collect real-time power metrics, including RAPL for CPUs and DRAM, NVML for GPUs, ACPI for platform power, etc. \\
+  \hline
+  Environment Support & Primarily focused on monitoring power consumption in the host environment. & Supports both bare-metal and virtualized environments. Provides ways to estimate power consumption in VMs on public clouds where direct power metrics may not be available. \\
+  \hline
+  Modeling and Estimation & Utilizes a ratio-based model to estimate power consumption per process based on resource utilization metrics collected from the system. Relies on sensors like RAPL to measure absolute power consumption. & Employs various models, including trained power models for VMs in public clouds and regression-based models, to estimate power consumption at different levels within the environment. \\
+  \hline
+  Training and Optimization & Does not involve explicit training of power models. Relies on direct sensor readings and resource utilization metrics to estimate power consumption. & Includes a Model Server component for training power models using Prometheus metrics from bare-metal nodes. The models are continuously optimized for accuracy and can be shared publicly for use in various environments. \\
+  \hline
+  Limitations and Future Enhancements & Acknowledges limitations such as the accuracy of pre-trained power models, challenges in estimating power in virtualized environments, and overhead issues. & Acknowledges similar limitations and actively works on enhancements, including broader support for power data sources, vendor-agnostic support, performance optimization, and multi-level deployment strategies for accurate power estimation in VMs. \\
+  \hline
+  \multicolumn{3}{|p{15cm}|}{\textbf{Best Choice:} Kepler stands out as the best choice due to its comprehensive approach to power consumption monitoring and estimation. With support for multiple environments, advanced modeling techniques, continuous optimization of power models, and active development for future enhancements, Kepler offers a robust solution for accurate and efficient power management in modern computing environments.} \\
+  \hline
+  \end{tabular}
+  \caption{Comparison of Scaphandre and Kepler}
+  \label{tab:comparison}
+  \end{table}
+
+\newpage
 \section{Needs Analysis}
 \label{sec:needs_analysis}
 
@@ -152,21 +220,8 @@ In the context of integrating Green IT into DevOps practices at Orange Business 
 
 By identifying these stakeholders and their respective roles, we can ensure a comprehensive approach to integrating Green IT into our DevOps practices, balancing rapid software delivery with environmental responsibility.
 
-\subsection{Use Case Diagrams}
-\label{subsec:use_case_diagrams}
-
-The role of use case diagrams in UML is to model the behavior of a system and capture the associated requirements. These diagrams highlight the high-level functions of the system and define its scope. They also help identify the interactions between the system and its stakeholders. However, it is important to note that use case diagrams focus on what the system does and how the stakeholders use it, without delving into its internal workings.
-
-In this perspective, a use case represents a function that the system performs to achieve a specific goal for the user. It should generate an observable result that holds value for the system's user. On the other hand, a stakeholder represents the role of a user who interacts with the modeled system. This could be a human, an organization, a machine, or another external system.
-
-The relationships between elements in use case diagrams play a crucial role. As UML model elements, these relationships establish semantic links that define the structure and behavior among different elements of the model.
-
-In the context of integrating Green IT into DevOps at Orange Business Services Morocco, we present the global use case diagram of our solution in Fig. \ref{fig:use_case_diagram}. This diagram provides an overview of the interactions between the stakeholders and the various functionalities of the system.
 
 
-
-
-\section{}
 
 
 
