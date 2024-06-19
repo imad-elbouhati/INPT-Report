@@ -1,5 +1,7 @@
 \chapter{Technologies Used}
 \label{chap:Chapter 3 title}
+
+\section{Introduction}
 The adoption of the DevOps approach largely relies on the automation of communication between the various required tools, thus allowing us to benefit from the previously described functionalities. The choice of tools for each stage of our DevOps pipeline, such as continuous integration and continuous deployment, depends on specific criteria related to our needs. Consequently, this comparative study aims to reinforce the selection of tools that we have implemented for the integration of Green IT into DevOps practices.
 
 \newpage
@@ -164,7 +166,7 @@ Table 3.2 summarizes the comparison of the previously presented source code mana
 
 We chose GitLab without hesitation due to its open-source nature and free community version. This decision was motivated by the ability to integrate continuous delivery and issue tracking functionalities, which will allow us to expand our tool usage in the future.
 
-\subsection{GitLab Platform}
+\subsection*{GitLab Platform}
 
 GitLab is now a comprehensive DevOps platform presented as a single application. This platform revolutionizes development, security, operations, and collaboration practices within teams. With GitLab, it is possible to create, test, and deploy software faster, using an integrated solution. GitLab includes the following features:
 \begin{itemize}
@@ -185,7 +187,7 @@ GitLab is now a comprehensive DevOps platform presented as a single application.
 
 Prometheus is an open-source monitoring and alerting toolkit designed for reliability and scalability in modern, dynamic environments. It is part of the Cloud Native Computing Foundation (CNCF) and is widely used for monitoring containerized applications and microservices architectures. Prometheus provides a multi-dimensional data model with time series data identified by metric name and key/value pairs. It collects metrics from configured targets at specified intervals, evaluates rule expressions, displays the results, and can trigger alerts if specified conditions are met.
 
-\subsection{Prometheus Architecture}
+\subsection*{Prometheus Architecture}
 
 \begin{figure}[H]
   \centering
@@ -236,6 +238,16 @@ Grafana provides a rich set of features for creating interactive dashboards and 
   \item \textbf{Advanced Features:} Grafana provides advanced features such as alerting and annotations, allowing users to set up alerts based on predefined thresholds or conditions and annotate dashboards with contextual information for improved situational awareness.
 \end{itemize}
 
+\subsection{Slack}
+
+Slack is utilized specifically for receiving alerts and notifications from Prometheus, our monitoring and alerting tool. Through seamless integration, Prometheus sends real-time alerts to designated Slack channels, ensuring timely response to any issues or incidents detected in our systems.
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{Logos/slack_logo.png}
+\caption{Slack Logo}
+\end{figure}
+
+
 \section{Project Management Tool}
 
 With the rapid evolution of information and communication technologies, user needs are increasing and becoming more demanding, while the economic context is constantly changing. In this context, managing IT projects has become a challenge for companies, as it is essential to master and successfully complete them, regardless of their size or type. For our DevSecOps team, which adopts the Agile Scrum method, Jira Software offers ready-to-use Scrum and Kanban boards. These boards serve as task management centers, where tasks are associated with customizable workflows. They ensure transparency of teamwork and provide visibility into the progress of each task. Time tracking features and real-time performance reports (Burnup/Burndown charts, sprint reports, velocity charts) allow the team to closely monitor its productivity over time.
@@ -246,31 +258,6 @@ With the rapid evolution of information and communication technologies, user nee
     \caption{Jira logo}
 \end{figure}
 
-
-\section{Communication Tools}
-
-In the dynamic environment of modern project management, effective communication is paramount to ensure seamless collaboration and timely decision-making. Utilizing robust communication tools can streamline interactions within teams and enhance overall productivity.
-
-\subsection{Microsoft Teams}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=3cm]{Logos/microsoft_teams_logo.png}
-  \caption{Microsoft Teams Logo}
-\end{figure}
-
-Microsoft Teams serves as a cornerstone for communication within our DevSecOps team. This platform offers a comprehensive suite of features, including instant messaging, video conferencing, file sharing, and integration with various productivity tools. Team members can collaborate in real-time, hold meetings, and access project-related resources, fostering efficient communication and collaboration.
-
-\subsection{Slack}
-
-Slack is utilized specifically for receiving alerts and notifications from Prometheus, our monitoring and alerting tool. Through seamless integration, Prometheus sends real-time alerts to designated Slack channels, ensuring timely response to any issues or incidents detected in our systems.
-\begin{figure}[H]
-\centering
-\includegraphics[width=8cm]{Logos/slack_logo.png}
-\caption{Slack Logo}
-\end{figure}
-
-By leveraging Microsoft Teams and Slack, our team ensures effective communication channels, promoting transparency, collaboration, and agility in project management endeavors.
 
 \section{Conclusion}
 

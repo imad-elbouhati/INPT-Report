@@ -1,4 +1,4 @@
-\chapter{Specification and Needs Analysis}
+\chapter{Specification and Requirements Analysis}
 \label{chap:Chapter 2 title}
 \section{Introduction}
 
@@ -33,10 +33,33 @@ While utilizing GitLab accelerates software development and deployment, there's 
   \item Without visibility into the energy consumption and carbon footprint of the Kubernetes cluster, targeted strategies for reducing environmental impact are challenging to implement.
 \end{itemize}
 
-\subsection{Functional needs}
-Functional requirements gathering is a crucial step in the project. This stage produces the functional specifications document, during which the expected functionalities are formalized along with all governing management rules. To address the issues identified in the existing study, the principle is to integrate monitoring tools such as Kepler (Kubernetes-based Efficient Power Level Exporter), Prometheus, and Grafana into the CI/CD pipeline. This integration aims to measure the energy consumption and CO$_2$ emissions of Orange's Kubernetes cluster, providing valuable insights for optimizing Green IT practices within the DevOps workflow.
+\subsection{Functional requirements}
+Functional requirements gathering is a crucial step in the project. This stage produces the functional specifications document, during which the expected functionalities are formalized along with all governing management rules.
 
-\subsection{Non-Functional needs}
+To address the issues identified in the existing study, the principle is to integrate monitoring tools such as Kepler (\emph{Kubernetes-based Efficient Power Level Exporter}), Prometheus, and Grafana into the CI/CD pipeline. This integration aims to measure the energy consumption and CO$_2$ emissions of Orange’s Kubernetes cluster, providing valuable insights for optimizing Green IT practices within the DevOps workflow.
+
+\subsubsection*{Integration of Monitoring Tools}
+
+The integration of these monitoring tools is essential. Kepler will monitor energy consumption and CO$_2$ emissions, Prometheus will collect and store metrics from Kepler, and Grafana will visualize the collected metrics for better insights. Automating the deployment and configuration of Kepler, Prometheus, and Grafana within the CI/CD pipeline is also a key requirement, ensuring that monitoring is an integral part of the continuous integration and deployment processes.
+
+\subsubsection*{GitLab Template Creation}
+
+Creating a GitLab template for GitLab CI/CD pipelines will streamline the process of integrating and deploying Kepler, Prometheus, and Grafana configurations. This template will include automated steps for deployment, configuration, and monitoring setup, ensuring consistency and efficiency across projects.
+
+
+\subsubsection*{Data Collection and Visualization}
+
+Collecting real-time data on energy consumption and CO$_2$ emissions from the Kubernetes cluster is critical, along with storing historical data for trend analysis and reporting. This data will be visualized using Grafana dashboards, providing customizable views to monitor both real-time and historical data.
+
+\subsubsection*{Alerting and Notification}
+
+Additionally, setting up alerting rules in Prometheus to monitor key metrics such as high energy consumption or CO$_2$ emission levels is vital. Defining thresholds for these alerts will trigger notifications based on predefined conditions.
+
+Integrating Prometheus Alertmanager with Slack to send notifications ensures that alerts are promptly sent to specific Slack channels or user groups for immediate action. This notification system will help in taking timely measures to address any issues related to energy consumption and emissions, thereby supporting the goal of optimizing Green IT practices within the DevOps workflow.
+
+
+
+\subsection{Non-Functional requirements}
 
 Non-functional requirements play a crucial role in system design,
 because they define the attributes, constraints and restrictions to be taken into account.
@@ -112,7 +135,7 @@ Green DevOps relies on the following concepts:
 \section{DevOps Monitoring}
 DevOps monitoring is the process of tracking and measuring the performance of applications and systems in order to help software development teams identify and resolve potential issues more quickly. This is typically done via a manual or automated DevOps monitoring solution or a collection of continuous monitoring tools that gather data
 
-\subsection{DevOps Monitoring Use Cases}
+\subsection*{DevOps Monitoring Use Cases}
 
 The main benefit of DevOps monitoring is its ability to define, track, and measure KPIs across all aspects of DevOps. Here are some specific use cases of DevOps monitoring:
 
@@ -196,12 +219,9 @@ In the landscape of power consumption monitoring tools, Scaphandre and Kepler st
   \end{table}
 
 \newpage
-\section{Needs Analysis}
-\label{sec:needs_analysis}
 
-After identifying the functional and non-functional requirements of the project, it is essential to clearly define the stakeholders of the system and the different use cases. This step is crucial for preparing the design phase of the project.
 
-\subsection{Identification of Stakeholders}
+\section{Identification of Stakeholders}
 \label{subsec:identification_stakeholders}
 
 Identifying stakeholders is a fundamental step in any development project. It helps to understand the interactions and measure the influence of each group on the actions to be undertaken. But what exactly is a stakeholder? A stakeholder can be a physical person or a legal entity that participates in or is affected by the action or project in question. It is important to clearly specify the action or series of actions for which we seek to determine who the stakeholders are and what they represent.
@@ -221,7 +241,9 @@ In the context of integrating Green IT into DevOps practices at Orange Business 
 By identifying these stakeholders and their respective roles, we can ensure a comprehensive approach to integrating Green IT into our DevOps practices, balancing rapid software delivery with environmental responsibility.
 
 
+\section{Conclusion}
 
+This chapter outlined the essential functional and non-functional requirements for integrating monitoring tools into the CI/CD pipeline. By leveraging Kepler, Prometheus, and Grafana, we aim to provide accurate, scalable, and reliable measurements of energy consumption and CO$_2$ emissions. Emphasis was placed on security, performance, ease of use, and compatibility with existing infrastructure. These requirements form the blueprint for implementation, ensuring the system meets its objectives and supports informed decision-making through effective monitoring and visualization.
 
 
 

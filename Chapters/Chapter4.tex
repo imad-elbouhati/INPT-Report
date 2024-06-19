@@ -1,6 +1,6 @@
 \chapter{Implementation}
 \label{chap:Chapter 4 title}
-\section*{Introduction}
+\section{Introduction}
 
 The implementation chapter is a crucial step in our project. In this chapter, we will present in detail the various steps we followed to implement our solution. Overall, this implementation chapter will allow us to document in a detailed and transparent manner the process of executing our project. It will highlight the efforts made, the choices made, and the results obtained.
 
@@ -24,7 +24,7 @@ role as it defines the various stages of the CI pipeline and specifies the actio
     \caption{Kepler template repository}
 \end{figure}
 
-\subsection{Integration of the Kepler Template}
+\subsection*{Integration of the Kepler Template}
 
 After creating the template, it can be used and integrated directly into a project. To achieve this, a few lines must be added to the \texttt{.gitlab-ci.yml} file.
 
@@ -203,7 +203,7 @@ We utilize Grafana dashboards to monitor the performance and resource utilizatio
     \label{fig:grafana-dashboard-2}
 \end{figure}
 
-The above figure (Figure \ref{fig:grafana-dashboard-2}) shows the carbon emissions associated with the energy consumption in the cluster. The dashboard highlights the carbon footprint in terms of \texttt{CO2 Coal}, \texttt{CO2 Petroleum}, and \texttt{CO2 Natural Gas}. This information is crucial for understanding the environmental impact of our infrastructure and taking steps towards sustainability.
+The above figure (Figure \ref{fig:grafana-dashboard-2}) shows the carbon emissions associated with the energy consumption in the cluster. The dashboard highlights the carbon footprint in terms of \texttt{CO$_2$ Coal}, \texttt{CO$_2$ Petroleum}, and \texttt{CO$_2$ Natural Gas}. This information is crucial for understanding the environmental impact of our infrastructure and taking steps towards sustainability.
 
 
 \subsubsection{Power Consumption Dashboard}
@@ -220,10 +220,10 @@ The above figure (Figure \ref{fig:grafana-dashboard-1}) displays the total power
 
 \newpage
 
-\section*{Conclusion}
+\section{Conclusion}
 
 Integrating our CI/CD pipeline with Kubernetes and monitoring tools has enabled efficient deployment and management of large-scale resources. The \texttt{kepler} and \texttt{monitoring} namespaces hosted essential pods, services, and daemons, ensuring high availability and simplified maintenance.
-The Grafana dashboards provide detailed views of power consumption and CO2 emissions, facilitating proactive and sustainable infrastructure management. This approach not only optimized performance but also helped minimize the environmental impact of our operations.
+The Grafana dashboards provide detailed views of power consumption and CO$_2$ emissions, facilitating proactive and sustainable infrastructure management. This approach not only optimized performance but also helped minimize the environmental impact of our operations.
 Future improvements could include integrating additional monitoring features and extending our CI/CD pipeline with complementary tools to enhance the robustness and security of our Kubernetes ecosystem.
 
 \pagebreak
