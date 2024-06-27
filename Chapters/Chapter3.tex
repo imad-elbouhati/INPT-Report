@@ -1,4 +1,4 @@
-\chapter{Technologies Used}
+\chapter{Used Technologies}
 \label{chap:Chapter 3 title}
 
 \section{Introduction}
@@ -57,7 +57,7 @@ There are several containerization tools available in the market. We conducted a
 
 The analysis presented in Table \ref{tab:container_tools_comparison} highlights the significance of Docker in the market. Docker stands out as the most universal solution in terms of image compatibility and offers numerous additional advantages. It simplifies the creation and management of containers, facilitates the design and construction of images, and enables easy distribution and version control of these images. Thus, Docker plays a crucial role in streamlining and enhancing containerization processes.
 
-\section{Introduction to Docker}
+\section{Docker Architecture}
 Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface. Another Docker client is Docker Compose, that lets you work with applications consisting of a set of containers.
 \newpage
 \begin{itemize}
@@ -79,7 +79,7 @@ Docker uses a client-server architecture. The Docker client talks to the Docker 
 
 Container orchestration involves automating much of the operational tasks required to run containerized workloads and services. This encompasses various aspects that software teams need to manage the lifecycle of a container, such as provisioning, deployment, scaling (both up and down), network management, and load balancing. Container orchestration simplifies and optimizes container management by providing tools and features to effectively coordinate different container instances and associated resources. This facilitates the deployment and management of complex and scalable containerized applications in production environments.
 
-\subsection{Why Orchestration is Necessary}
+\subsection{Orchestration role}
 
 The ability to create containers has existed for several decades but became widely accessible in 2008 when Linux integrated container functionality into its kernel. However, widespread adoption of containers took off with the introduction of Docker, an open-source containerization platform, in 2013. Docker became so popular that the terms "Docker containers" and "containers" are often used interchangeably.
 
@@ -105,18 +105,20 @@ Kubernetes is a powerful and popular container orchestration platform that enabl
     \item \textbf{Multi-cloud Provider Support and Portability:} Kubernetes enjoys broad support from all major cloud providers. This is particularly important for organizations deploying applications in a hybrid or multi-cloud environment.
 \end{itemize}
 
-\section{Helm}
+\section{Used tools}
+
+\subsection{Managing Kubernetes manifests}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5cm]{Figures/helm-logo.png}
-  \caption{Helm}
+  \caption[]{Helm logo}
   \label{fig:helm}
 \end{figure}
 
 Helm is a package manager for Kubernetes, facilitating the deployment, management, and scaling of applications within a Kubernetes cluster. Helm simplifies complex Kubernetes application deployments by providing a higher level of abstraction through Helm charts. These charts are pre-configured packages of Kubernetes resources.
 
-\subsection{Key Features of Helm}
+\subsection*{Key Features of Helm}
 \begin{itemize}
     \item \textbf{Charts:} Helm uses charts to define, install, and upgrade even the most complex Kubernetes applications. A Helm chart is a collection of files that describe a related set of Kubernetes resources.
     \item \textbf{Releases:} When a chart is deployed, it becomes a release. Helm manages these releases, enabling rollbacks and upgrades.
@@ -125,7 +127,7 @@ Helm is a package manager for Kubernetes, facilitating the deployment, managemen
     \item \textbf{Lifecycle Management:} Helm provides commands to manage the entire lifecycle of applications, from installation and upgrades to rollbacks and deletion.
 \end{itemize}
 
-\subsection{Benefits of Using Helm}
+\subsection*{Benefits of Using Helm}
 \begin{itemize}
     \item \textbf{Simplified Deployments:} Helm abstracts the complexity of Kubernetes configurations, making deployments more straightforward and repeatable.
     \item \textbf{Version Control:} Helm charts allow you to manage versions of your application, enabling easy rollbacks and upgrades.
@@ -136,7 +138,7 @@ Helm is a package manager for Kubernetes, facilitating the deployment, managemen
 Helm significantly enhances the Kubernetes experience by providing a robust framework for managing the complexities of application deployment and lifecycle management. It empowers developers to create more consistent and reliable deployments while reducing the potential for human error.
 
 
-\section{Source Code Management Tools}
+\subsection{Source Code Management}
 
 Source Code Management (SCM) concerns how software changes are managed. Its primary goal is to accelerate the delivery of quality code changes by development teams. SCM tools enhance tracking, visibility, collaboration, and control throughout the software development lifecycle, allowing developers working on complex projects to be more creative, have more freedom, and options.
 
@@ -176,12 +178,12 @@ GitLab is now a comprehensive DevOps platform presented as a single application.
     \item \textbf{Cost-Efficient Software Deployment:} GitLab enables faster software releases with reduced development costs.
 \end{itemize}
 
-\section{Prometheus}
-
+\subsection{Monitoring: Prometheus, Grafana}
+\subsection*{Prometheus}
 \begin{figure}[H]
   \centering
   \includegraphics[width=4cm]{Logos/prometheus-logo.png}
-  \caption{Prometheus}
+  \caption[]{Prometheus logo}
   \label{fig:prometheus_logo}
 \end{figure}
 
@@ -220,13 +222,13 @@ Figure \ref{fig:prometheus_architecture} illustrates the Prometheus architecture
 
 
 
-\section{Grafana}
+\subsection*{Grafana}
 
   
 \begin{figure}[H]
   \centering
   \includegraphics[width=5cm]{Logos/grafana-logo.png}
-  \caption{Grafana}
+  \caption[]{Grafana logo}
 \end{figure}
 Grafana is an open-source analytics and visualization platform commonly used alongside Prometheus for monitoring and observability purposes.
 Grafana provides a rich set of features for creating interactive dashboards and visualizations from various data sources, including Prometheus metrics, logs, and other time series databases.
@@ -238,24 +240,13 @@ Grafana provides a rich set of features for creating interactive dashboards and 
   \item \textbf{Advanced Features:} Grafana provides advanced features such as alerting and annotations, allowing users to set up alerts based on predefined thresholds or conditions and annotate dashboards with contextual information for improved situational awareness.
 \end{itemize}
 
-\subsection{Slack}
+\subsection{Notifications: Slack}
 
 Slack is utilized specifically for receiving alerts and notifications from Prometheus, our monitoring and alerting tool. Through seamless integration, Prometheus sends real-time alerts to designated Slack channels, ensuring timely response to any issues or incidents detected in our systems.
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{Logos/slack_logo.png}
-\caption{Slack Logo}
-\end{figure}
-
-
-\section{Project Management Tool}
-
-With the rapid evolution of information and communication technologies, user needs are increasing and becoming more demanding, while the economic context is constantly changing. In this context, managing IT projects has become a challenge for companies, as it is essential to master and successfully complete them, regardless of their size or type. For our DevSecOps team, which adopts the Agile Scrum method, Jira Software offers ready-to-use Scrum and Kanban boards. These boards serve as task management centers, where tasks are associated with customizable workflows. They ensure transparency of teamwork and provide visibility into the progress of each task. Time tracking features and real-time performance reports (Burnup/Burndown charts, sprint reports, velocity charts) allow the team to closely monitor its productivity over time.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Logos/jira-png.png}
-    \caption{Jira logo}
+\caption[]{Slack Logo}
 \end{figure}
 
 

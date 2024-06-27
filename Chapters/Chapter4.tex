@@ -6,7 +6,8 @@ The implementation chapter is a crucial step in our project. In this chapter, we
 
 \pagebreak
 
-\section{Creating a GitLab Template for Kepler}
+\section{Configuration \& Deployment}
+\subsection{Creating a GitLab Template for Kepler}
 
 To successfully integrate Kepler with our GitLab CI pipeline and ensure a seamless, efficient, and automated workflow, we followed a series of steps that included configuring the necessary environments, creating precise configuration files, and integrating essential monitoring tools
 \subsection*{Configuration of the Environment}
@@ -61,7 +62,7 @@ We define the following variables for the deployment:
 This configuration allows us to include the steps for deploying Kepler in our CI/CD pipeline using Helm and Kubernetes.
 
 
-\section{Deploying Prometheus \& Grafana on Kubernetes}
+\subsection{Deploying Prometheus \& Grafana on Kubernetes}
 
 To deploy Prometheus and Grafana in our Kubernetes cluster as part of the existing CI/CD pipeline, we have followed a structured approach. This ensures that both monitoring and visualization tools are set up correctly and efficiently.
 
@@ -84,10 +85,10 @@ This script accomplishes the following:
   \item Finds the Grafana pod and copies the Kepler dashboard JSON file to it.
 \end{itemize}
 
-\section{Configuring Rules and Alerts in Prometheus}
+\subsection{Configuring Rules and Alerts in Prometheus}
 In this section, we will cover the steps involved in configuring Prometheus to monitor specific metrics and set up alerting rules to notify us of any anomalies. Prometheus allows us to define custom rules for generating alerts based on our metrics, which can be integrated with various notification channels like Slack.
 
-\subsection{Creating Custom Alerting Rules}
+\subsubsection{Creating Custom Alerting Rules}
 
 To monitor the energy consumption of our nodes, we have defined several custom alerting rules. These rules are specified in the \texttt{additionalPrometheusRulesMap} section of our Prometheus configuration. Here is an example configuration:
 
@@ -113,7 +114,7 @@ Each alert includes annotations providing a summary and description of the alert
   \caption{Alerts dashboard in Prometheus}
 \end{figure}
 
-\subsection{Integrating Alerts with Slack}
+\subsubsection{Integrating Alerts with Slack}
 
 To ensure that we receive notifications for these alerts, we integrate Prometheus with Slack using Alertmanager. The following configuration sets up Alertmanager to send alerts to a Slack channel:
 

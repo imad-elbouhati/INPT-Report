@@ -7,7 +7,7 @@ The success of a project heavily relies on the quality of its initiation. Theref
 
 \pagebreak
 
-\section{Study of the Current State}
+\section{Study and analysis of the current state}
 
 Orange Business Services Morocco has embraced an approach known as CI/CD to efficiently manage the development and delivery of its projects. They utilize the GitLab platform, which facilitates swift creation, compilation, testing, delivery, and deployment of software.
 
@@ -23,7 +23,7 @@ In their existing solution, they have established continuous integration and del
 This approach enables Orange Business Services Morocco to efficiently manage the development and delivery of their projects by automating processes using GitLab, Docker, Nexus, and Kubernetes. It empowers them to deliver high-quality software more rapidly.
 
 \newpage
-\section{Analysis and criticism of the current state}
+\subsection{Criticism of the current state}
 
 While utilizing GitLab accelerates software development and deployment, there's a clear need for enhancements focused on sustainability and reducing environmental impact. An exhaustive study of the existing system was conducted to refine our project's scope and expected functionalities, aiming for a more reliable system than the previous one. Identified areas for improvement include
 
@@ -80,29 +80,26 @@ or the market.
 \end{itemize}
 
 
-\section{DevOps appraoch}
+\section{DevOps}
+\subsection{Definition}
+
 The word DevOps is a combination of the terms development and operations, meant to represent a collaborative or shared approach to the tasks performed by a company's application development and IT operations teams.
 The DevOps methodology aims to shorten the systems development lifecycle and provide continuous delivery with high software quality. These characteristics help ensure a culture of building, testing, and releasing software that is more reliable and at a high velocity.
 
-\section{Definition of CI/CD}
+\subsection{CI/CD}
 \textit{Continuous Integration (CI)} is a software development practice where developers frequently merge their code changes into a central repository, typically multiple times a day. Each merge triggers an automated build and testing process. The primary goal of CI is to detect and address issues early in the development cycle, which helps in maintaining code quality and reducing integration problems. By integrating frequently, developers can identify bugs early, facilitating easier and quicker fixes.
 
 \textit{Continuous Delivery (CD)} extends CI by automatically preparing code changes for a release to production. It ensures that the software can be reliably released at any time, with the deployment process being automated but requiring manual approval. Continuous Deployment is a further extension of CD where every change that passes all stages of the production pipeline is automatically released to customers without human intervention. This practice reduces the lead time for delivering new features and fixes, thus providing rapid feedback to developers and stakeholders.
 
-\section{Definition of Green IT}
 
-Green IT, also known as Green Information Technology, refers to environmentally sustainable computing practices. It encompasses a broad range of strategies aimed at minimizing the environmental impact of IT operations. This includes optimizing energy consumption, reducing electronic waste, and promoting the use of eco-friendly technologies. 
-
-The goal of Green IT is to create more efficient and sustainable systems by implementing practices such as energy-efficient hardware, virtualization, and effective cooling systems in data centers. It also involves the adoption of cloud computing to optimize resource use and the implementation of robust recycling programs for electronic devices.
-
-\section{Green DevOps:}
+\subsection{Green DevOps:}
 Green DevOps extends DevOps principles, focusing on resource efficiency while staying agile. It emphasizes sustainability, reducing environmental impact, and integrating eco-friendly strategies into software development. The goal is to balance technological innovation with ecological responsibility.
 \begin{figure}[H]
   \centering
   \includegraphics[width=16cm]{Figures/devgreenops.png}
   \caption{Green DevOps}
 \end{figure}
-\subsection{The Fundamental Principles of Green DevOps}
+\subsection*{The Fundamental Principles of Green DevOps}
 Green DevOps is nothing more than an extension of DevOps. It shouldn't be viewed as an upheaval of all DevOps principles. We retain all DevOps principles but adjust them as finely as possible to optimize resource usage.
 
 Green DevOps relies on the following concepts:
@@ -120,7 +117,7 @@ Green DevOps relies on the following concepts:
   \item \textbf{Awareness:} DevOps teams need to be aware of environmental issues. Employee training and engagement are essential to fostering the adoption of sustainable practices.
 \end{itemize}
 
-\subsection{The Benefits of Green DevOps}
+\subsection*{The Benefits of Green DevOps}
 
 \begin{itemize}
   \item \textbf{Cost Reduction}: Less wasted resources, time saved, and efficient resource utilization result in a significant reduction in operating and infrastructure costs.
@@ -132,7 +129,7 @@ Green DevOps relies on the following concepts:
   \item \textbf{Regulatory Compliance}: With an increasing number of environmental regulations in place, Green DevOps helps companies comply with standards and avoid potential penalties.
 \end{itemize}
 
-\section{DevOps Monitoring}
+\subsection{DevOps Monitoring}
 DevOps monitoring is the process of tracking and measuring the performance of applications and systems in order to help software development teams identify and resolve potential issues more quickly. This is typically done via a manual or automated DevOps monitoring solution or a collection of continuous monitoring tools that gather data
 
 \subsection*{DevOps Monitoring Use Cases}
@@ -151,11 +148,43 @@ The main benefit of DevOps monitoring is its ability to define, track, and measu
   Continuous tracking of logs and metrics helps teams identify the root cause — where a problem started or occurred. This allows engineers to detect patterns in system behavior to anticipate and prevent future issues, improving mean time to detection (MTTD), mean time to repair (MTTR), and mean time to isolate (MTTI).
 \end{itemize}
 
-\section{Kepler tool}
+
+
+\section{Benchmark}
+
+\subsection{Scaphandre vs. Kepler}
+
+In the landscape of power consumption monitoring tools, Scaphandre and Kepler stand out as prominent contenders. As organizations increasingly prioritize energy efficiency and sustainability, understanding the capabilities of these tools becomes crucial. In this benchmark, we compare Scaphandre and Kepler to provide insights into their strengths and suitability for diverse computing environments.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+  \hline
+  \textbf{Aspect} & \textbf{Scaphandre} & \textbf{Kepler} \\
+  \hline
+  Scope and Granularity & Provides per-process power usage monitoring. Collects real-time power consumption metrics from system components using sensors like RAPL. & Offers estimation of power consumption at the process, container, and Kubernetes pod levels. Utilizes various APIs and sensors to collect real-time power metrics, including RAPL for CPUs and DRAM, NVML for GPUs, ACPI for platform power, etc. \\
+  \hline
+  Environment Support & Primarily focused on monitoring power consumption in the host environment. & Supports both bare-metal and virtualized environments. Provides ways to estimate power consumption in VMs on public clouds where direct power metrics may not be available. \\
+  \hline
+  Modeling and Estimation & Utilizes a ratio-based model to estimate power consumption per process based on resource utilization metrics collected from the system. Relies on sensors like RAPL to measure absolute power consumption. & Employs various models, including trained power models for VMs in public clouds and regression-based models, to estimate power consumption at different levels within the environment. \\
+  \hline
+  Training and Optimization & Does not involve explicit training of power models. Relies on direct sensor readings and resource utilization metrics to estimate power consumption. & Includes a Model Server component for training power models using Prometheus metrics from bare-metal nodes. The models are continuously optimized for accuracy and can be shared publicly for use in various environments. \\
+  \hline
+  Limitations and Future Enhancements & Acknowledges limitations such as the accuracy of pre-trained power models, challenges in estimating power in virtualized environments, and overhead issues. & Acknowledges similar limitations and actively works on enhancements, including broader support for power data sources, vendor-agnostic support, performance optimization, and multi-level deployment strategies for accurate power estimation in VMs. \\
+  \hline
+  \multicolumn{3}{|p{15cm}|}{\textbf{Best Choice:} Kepler stands out as the best choice due to its comprehensive approach to power consumption monitoring and estimation. With support for multiple environments, advanced modeling techniques, continuous optimization of power models, and active development for future enhancements, Kepler offers a robust solution for accurate and efficient power management in modern computing environments.} \\
+  \hline
+  \end{tabular}
+  \caption{Comparison of Scaphandre and Kepler}
+  \label{tab:comparison}
+  \end{table}
+
+\subsection{Kepler}
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=10cm]{Logos/kepler-logo.png}
-  \caption{Kepler-logo}
+  \caption[]{Kepler-logo}
 \end{figure}
 Kepler, short for Kubernetes-based Efficient Power Level Exporter, is a sophisticated tool designed to measure and estimate power consumption at various levels within a cloud infrastructure. It aims to provide detailed insights into the energy usage of processes, containers, and Kubernetes pods, making it an invaluable resource for both industrial and research projects. Kepler’s architecture is extensible, allowing for the integration of novel power models that cater to diverse system architectures. This tool is essential in an era where efficient energy consumption is critical to minimize environmental impact and manage operational costs effectively.
 
@@ -191,32 +220,7 @@ The trained power models allow for accurate power estimation despite the limitat
   \caption{Collecting System Power Consumption – VMs versus BMs}
 \end{figure}
 
-\subsection{Benchmark: Scaphandre vs. Kepler}
 
-In the landscape of power consumption monitoring tools, Scaphandre and Kepler stand out as prominent contenders. As organizations increasingly prioritize energy efficiency and sustainability, understanding the capabilities of these tools becomes crucial. In this benchmark, we compare Scaphandre and Kepler to provide insights into their strengths and suitability for diverse computing environments.
-
-\begin{table}[htbp]
-  \centering
-  \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
-  \hline
-  \textbf{Aspect} & \textbf{Scaphandre} & \textbf{Kepler} \\
-  \hline
-  Scope and Granularity & Provides per-process power usage monitoring. Collects real-time power consumption metrics from system components using sensors like RAPL. & Offers estimation of power consumption at the process, container, and Kubernetes pod levels. Utilizes various APIs and sensors to collect real-time power metrics, including RAPL for CPUs and DRAM, NVML for GPUs, ACPI for platform power, etc. \\
-  \hline
-  Environment Support & Primarily focused on monitoring power consumption in the host environment. & Supports both bare-metal and virtualized environments. Provides ways to estimate power consumption in VMs on public clouds where direct power metrics may not be available. \\
-  \hline
-  Modeling and Estimation & Utilizes a ratio-based model to estimate power consumption per process based on resource utilization metrics collected from the system. Relies on sensors like RAPL to measure absolute power consumption. & Employs various models, including trained power models for VMs in public clouds and regression-based models, to estimate power consumption at different levels within the environment. \\
-  \hline
-  Training and Optimization & Does not involve explicit training of power models. Relies on direct sensor readings and resource utilization metrics to estimate power consumption. & Includes a Model Server component for training power models using Prometheus metrics from bare-metal nodes. The models are continuously optimized for accuracy and can be shared publicly for use in various environments. \\
-  \hline
-  Limitations and Future Enhancements & Acknowledges limitations such as the accuracy of pre-trained power models, challenges in estimating power in virtualized environments, and overhead issues. & Acknowledges similar limitations and actively works on enhancements, including broader support for power data sources, vendor-agnostic support, performance optimization, and multi-level deployment strategies for accurate power estimation in VMs. \\
-  \hline
-  \multicolumn{3}{|p{15cm}|}{\textbf{Best Choice:} Kepler stands out as the best choice due to its comprehensive approach to power consumption monitoring and estimation. With support for multiple environments, advanced modeling techniques, continuous optimization of power models, and active development for future enhancements, Kepler offers a robust solution for accurate and efficient power management in modern computing environments.} \\
-  \hline
-  \end{tabular}
-  \caption{Comparison of Scaphandre and Kepler}
-  \label{tab:comparison}
-  \end{table}
 
 \newpage
 
